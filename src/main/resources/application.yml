@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.56.103:3306/todo?characterEncoding=utf8&serverTimezone=UTC
+    username: web_user
+    password: webUser12qw!
+
+mybatis:
+  type-aliases-package: com.example.demo.mapper
+  mapper-locations: mybatis/mapper/**/*.xml

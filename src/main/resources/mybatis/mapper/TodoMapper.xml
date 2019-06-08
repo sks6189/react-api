@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.TodoMapper">
+    <select id="getTodoList" resultType="java.util.HashMap">
+        SELECT * FROM t_list
+        ORDER BY IF(parent = 0, idx, parent) ASC, idx ASC
+    </select>
+</mapper>
