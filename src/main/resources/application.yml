@@ -8,3 +8,10 @@ spring:
 mybatis:
   type-aliases-package: com.example.demo.mapper
   mapper-locations: mybatis/mapper/**/*.xml
+
+# logging 참조 URL : http://jmlim.github.io/spring/2018/12/26/spring-boot-logback-sql-pretty/
+logging :
+  level :
+    jdbc.sqlonly : DEBUG
+    org.springframework.web: DEBUG
+    com.zaxxer.hikari.HikariDataSource: ERROR

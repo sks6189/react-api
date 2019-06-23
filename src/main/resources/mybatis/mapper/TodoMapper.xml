@@ -2,9 +2,33 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.TodoMapper">
+<mapper namespace="com.example.demo.todo.TodoMapper">
     <select id="getTodoList" resultType="java.util.HashMap">
         SELECT * FROM t_list
         ORDER BY IF(parent = 0, idx, parent) ASC, idx ASC
     </select>
+
+    <select id="getParentTodoCount" resultType="java.lang.Integer">
+        SELECT count(*) AS cnt FROM t_list
+        WHERE parent = #{idx}
+    </select>
+
+    <insert id="insertTodo" useGeneratedKeys="true" keyProperty="idx" parameterType="com.example.demo.todo.Todo">
+        INSERT INTO t_list SET
+            `parent` = #{parent},
+            `title` = #{title}
+    </insert>
+
+    <update id="updateTodo" parameterType="com.example.demo.todo.Todo">
+        UPDATE t_list SET
+            `parent` = #{parent},
+            `title` = #{title},
+            `use` = #{use}
+        WHERE idx = #{idx}
+    </update>
+
+    <delete id="deleteTodo" parameterType="com.example.demo.todo.Todo">
+        DELETE FROM t_list
+        WHERE idx = #{idx}
+    </delete>
 </mapper>
